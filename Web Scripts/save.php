@@ -4,6 +4,7 @@ if ($_POST && $_POST['hash'] && $_POST['time'] && md5($key.$_POST['time']) == $_
 	$data = $_POST;
 	unset($data['hash']);
 	unset($data['time']);
+	array_unshift($data, getenv('REMOTE_ADDR'));
 	$handle = fopen("data.csv", "a") or die('Cannot access or create the file.  Be sure that the web user has the proper permissions in this folder.');
 	fputcsv($handle, $data);
 	fclose($handle);
