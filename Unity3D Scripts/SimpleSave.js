@@ -7,26 +7,27 @@ function Save (arr : Array) {
 		print ("You must provide a secret key and url to continue!");
 		return;
 	}
-    var form : WWWForm = new WWWForm();
-    var t = Time.time;
-    form.AddField("time", ""+t);
-    var hash : String = Md5Sum(secretKey+t);
-    form.AddField("hash", hash);
-    for(var i = 0; i < arr.length; i++) {
-    	form.AddField("form_"+i, "" + arr[i]);
-    }
+	var form : WWWForm = new WWWForm();
+	var t = Time.time;
+	form.AddField("time", ""+t);
+	var hash : String = Md5Sum(secretKey+t);
+	form.AddField("hash", hash);
+	for(var i = 0; i < arr.length; i++) {
+		form.AddField("form_"+i, "" + arr[i]);
+	}
 	var w = WWW(url, form);
-    yield w;
-    if (w.error != null) {
-        print(w.error);
-    } else {
-        print(w.text);
-    }
+	yield w;
+	if (w.error != null) {
+		print(w.error);
+	} else {
+		print(w.text);
+	}
 }
 
 static function Md5Sum(strToEncrypt: String) 
 {
-	// Original author: Matthew Wegner
+	// Author: Matthew Wegner
+	// URL: http://wiki.unity3d.com/index.php?title=MD5
 	var encoding = System.Text.UTF8Encoding();
 	var bytes = encoding.GetBytes(strToEncrypt);
  

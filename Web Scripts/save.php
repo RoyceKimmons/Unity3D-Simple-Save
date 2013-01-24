@@ -1,5 +1,5 @@
 <?php
-$key = 'secret'; // Update to match the secret key in your Unity script
+$key = 'secret'; // Update to match the secret key in your Unity inspector
 if ($_POST && $_POST['hash'] && $_POST['time'] && md5($key.$_POST['time']) == $_POST['hash']) {
 	$data = $_POST;
 	unset($data['hash']);
