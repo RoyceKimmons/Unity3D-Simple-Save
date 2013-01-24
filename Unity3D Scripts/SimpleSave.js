@@ -24,8 +24,9 @@ function Save (arr : Array) {
     }
 }
 
-static function Md5Sum(strToEncrypt: String)
+static function Md5Sum(strToEncrypt: String) 
 {
+	// Original author: Matthew Wegner
 	var encoding = System.Text.UTF8Encoding();
 	var bytes = encoding.GetBytes(strToEncrypt);
  
